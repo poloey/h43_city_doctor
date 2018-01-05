@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <title>
-    @yield('title', 'Doctor in City')
+    @yield('title', 'City Doctor')
   </title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -15,7 +15,7 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{{ route('home') }}"> <i class="fa fa-user-md"></i> Doctor In City</a>
+    <a class="navbar-brand" href="{{ route('home') }}"> <i class="fa fa-user-md"></i> City Doctor</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -30,6 +30,31 @@
         <li class="nav-item {{ Request::is('doctors') ? 'active' : '' }}">
           <a class="nav-link" href="{{ route('doctor.index') }}">All Doctors</a>
         </li>
+      </ul>
+      <ul class="navbar-nav ml-auto mr-5">
+        @auth
+          <li class="nav-item dropdown mr-5">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{Auth::user()->name}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                  <i class="fa fa-sign-out"></i> Logout
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+              </form>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{{route('dashboard.index')}}"> <i class="fa fa-tachometer"></i> Dashboard</a>
+            </div>
+          </li>
+        @else
+          <li>
+            <a class="nav-link" href="{{ route('login') }}">Login</a>
+          </li>
+        @endauth
       </ul>
     </div>
   </nav>

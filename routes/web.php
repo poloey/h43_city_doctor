@@ -24,7 +24,8 @@ Route::get('/search', 'PageController@search')->name('search');
 // dashboard
 Route::get('/dashboard', [
   'as' => 'dashboard.index',
-  'uses' => 'DashboardController@index'
+  'uses' => 'DashboardController@index',
+  'middleware' => 'auth'
 ]);
 
 

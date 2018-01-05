@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <title>
-    @yield('title', 'Doctor in City')
+    @yield('title', 'City Doctor')
   </title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -20,20 +20,58 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
-          <a class="nav-link" href="{{ route('home') }}">Home </a>
-        </li>
-        <li class="nav-item {{ Request::is('disciplines') ? 'active' : '' }}">
-          <a class="nav-link" href="{{ route('discipline.index') }}">All Discipline</a>
-        </li>
-        <li class="nav-item {{ Request::is('doctors') ? 'active' : '' }}">
-          <a class="nav-link" href="{{ route('doctor.index') }}">All Doctors</a>
+      <ul class="navbar-nav ml-auto mr-5">
+        <li class="nav-item dropdown mr-5">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{Auth::user()->name}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+                <i class="fa fa-sign-out"></i> Logout
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{route('home')}}"> <i class="fa fa-tachometer"></i> View Website</a>
+          </div>
         </li>
       </ul>
     </div>
   </nav>
-  @yield('content')
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            <div class="dropdown">
+              <div class="dropdown-toggle my-4" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Hospital
+              </div>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Add a Hospital</a>
+                <a class="dropdown-item" href="{{ route('dashboard.index') }}">All Hospital</a>
+              </div>
+              <div class="dropdown-toggle my-4" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Doctor
+              </div>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Doctor</a>
+                <a class="dropdown-item" href="#">Doctor</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        @yield('content')
+      </div>
+    </div>
+  </div>
+
   <footer class="p-5 text-light" style="background: rgb(38, 50, 56);">
     <div class="container">
       <p>
