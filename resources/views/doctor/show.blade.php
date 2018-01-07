@@ -14,7 +14,7 @@
           <div class="card my-3 text-white bg_random_color">
             <div class="card-body">
               <div class="text-center">
-                <img class="rounded-circle my-3" src="{{ asset('image/people/' . intval($doctor->id % 99) .'.jpg') }}" alt="">
+                <img class="rounded-circle my-3" src="{{ asset('image/people/' . (intval($doctor->id % 98) + 1) .'.jpg') }}" alt="">
                 <div>
                   Name: {{$doctor->name}}
                 </div>

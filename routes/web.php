@@ -22,12 +22,38 @@ Route::get('/disciplines/{discipline}', 'DisciplineController@show')->name('disc
 Route::get('/search', 'PageController@search')->name('search');
 
 // dashboard
-Route::get('/dashboard', [
-  'as' => 'dashboard.index',
-  'uses' => 'DashboardController@index',
-  'middleware' => 'auth'
-]);
+Route::group(['middleware' => 'auth'], function () {
+  Route::get('/dashboard', [
+    'as' => 'dashboard.index',
+    'uses' => 'DashboardController@index',
+  ]);
+  Route::get('/dashboard/hospital/create', [
+    'as' => 'dashboard.hospital.create',
+    'uses' => 'HospitalController@create'
+  ]);
+  Route::post('/dashboard/hospital/create', [
+    'as' => 'dashboard.hospital.store',
+    'uses' => 'HospitalController@store'
+  ]);
+});
 
+// json response 
+// all division
+Route::get('json/divisions', function () {
+  return App\Division::all();
+});
+Route::get('json/degrees', function () {
+  return App\Degree::all();
+});
+// cities of division
+Route::get('json/divisions/{id}', function ($id) {
+  return App\City::where('division_id', $id)->get();
+});
+
+// hospitals of a city
+Route::get('json/cities/{id}', function ($id) {
+  return App\Hospital::where('city_id', $id)->get();
+});
 
 
 /// automatic auth

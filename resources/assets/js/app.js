@@ -8,6 +8,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import {store} from './store.js'
+window.Events = new Vue();
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16,7 +18,11 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('division-group', require('./components/DivisionGroup.vue'));
+Vue.component('city-group', require('./components/CityGroup.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    store
 });
+

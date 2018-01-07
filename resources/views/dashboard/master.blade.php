@@ -6,6 +6,8 @@
   </title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
+  <!-- CSRF Token  for axios-->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
@@ -14,6 +16,7 @@
   @yield('style')
 </head>
 <body>
+<div id="app">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="{{ route('dashboard.index') }}"> <i class="fa fa-user-md"></i> City Doctor Dashboard</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,19 +51,19 @@
         <div class="card">
           <div class="card-header">
             <div class="dropdown">
-              <div class="dropdown-toggle my-4" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a href="#" class="dropdown-toggle my-4 d-block" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Hospital
-              </div>
+              </a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Add a Hospital</a>
+                <a class="dropdown-item" href="{{ route('dashboard.hospital.create') }}">Add a Hospital</a>
                 <a class="dropdown-item" href="{{ route('dashboard.index') }}">All Hospital</a>
               </div>
-              <div class="dropdown-toggle my-4" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a href="#" class="dropdown-toggle my-4 d-block" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Doctor
-              </div>
+              </a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Doctor</a>
-                <a class="dropdown-item" href="#">Doctor</a>
+                <a class="dropdown-item" href="#">Add Doctor</a>
+                <a class="dropdown-item" href="#">All doctor</a>
               </div>
             </div>
           </div>
@@ -82,8 +85,10 @@
       </p>
     </div>
   </footer>
+</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>

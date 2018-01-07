@@ -20,8 +20,6 @@
   </tbody>
 </table>
 <div class="p-3">
-  <div class="d-flex justify-content-center">
-    {{$hospitals->links('vendor.pagination.bootstrap-4')}}
-  </div>
+  {{$hospitals->links('vendor.pagination.bootstrap-4')}}
 </div>
 @endsection
