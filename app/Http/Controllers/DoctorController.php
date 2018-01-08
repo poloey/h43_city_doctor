@@ -74,6 +74,7 @@ class DoctorController extends Controller
   public function doctors()
   {
     $doctors = Doctor::paginate(20);
+    $doctors = Doctor::where('user_id', auth()->id())->paginate(20);
     return view('dashboard.doctors', compact('doctors'));
   }
 }
