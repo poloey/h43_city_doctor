@@ -20,7 +20,7 @@ npm install
 npm run prod
 ~~~
 
-#### Downloading composer package 
+#### Downloading composer package  and dumping
 ~~~bash
 composer install
 composer dump-autoload
