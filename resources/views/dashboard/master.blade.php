@@ -58,12 +58,14 @@
                 <a class="dropdown-item" href="{{ route('dashboard.hospital.create') }}">Add a Hospital</a>
                 <a class="dropdown-item" href="{{ route('dashboard.index') }}">All Hospital</a>
               </div>
-              <a href="#" class="dropdown-toggle my-4 d-block" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div class="dropdown">
+              <a href="" class="dropdown-toggle my-4 d-block" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Doctor
               </a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Add Doctor</a>
-                <a class="dropdown-item" href="#">All doctor</a>
+                <a class="dropdown-item" href="{{ route('dashboard.doctor.create') }}">Add Doctor</a>
+                <a class="dropdown-item" href="{{ route('dashboard.doctors') }}">All doctor</a>
               </div>
             </div>
           </div>

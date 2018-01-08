@@ -1,8 +1,8 @@
 @extends('dashboard.master')
 @section('content')
 @include('partials.errors')
-<div class="bg-info text-white p-5 mb-3">
-  <h2>Add a Hospital</h2>
+<div class="bg-info text-center py-3 mb-3 text-white">
+  Add a Hospital
 </div>
 <form action="{{ route('dashboard.hospital.store') }}" method="post">
   @if(Session::has('status'))

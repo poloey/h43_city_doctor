@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Doctor extends Model
 {
+  protected $guarded = [];
   public function hospital()
   {
     return $this->belongsTo(Hospital::class);

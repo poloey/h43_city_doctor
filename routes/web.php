@@ -39,6 +39,25 @@ Route::group(['middleware' => 'auth'], function () {
     'as' => 'dashboard.hospital.destroy',
     'uses' => 'HospitalController@destroy'
   ]);
+
+  Route::get('/dashboard/doctors', [
+    'as' => 'dashboard.doctors',
+    'uses' => 'DoctorController@doctors'
+  ]);
+  Route::get('/dashboard/doctor/create', [
+    'as' => 'dashboard.doctor.create',
+    'uses' => 'DoctorController@create'
+  ]);
+  Route::post('/dashboard/doctor/create', [
+    'as' => 'dashboard.doctor.store',
+    'uses' => 'DoctorController@store'
+  ]);
+  Route::delete('/dashboard/doctor/delete/{id}', [
+    'as' => 'dashboard.doctor.destroy',
+    'uses' => 'DoctorController@destroy'
+  ]);
+
+
 });
 
 // json response 

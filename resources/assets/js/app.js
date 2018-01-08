@@ -20,6 +20,7 @@ window.Events = new Vue();
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('division-group', require('./components/DivisionGroup.vue'));
 Vue.component('city-group', require('./components/CityGroup.vue'));
+Vue.component('hospital-group', require('./components/HospitalGroup.vue'));
 
 const app = new Vue({
     el: '#app',
