@@ -35,6 +35,10 @@ Route::group(['middleware' => 'auth'], function () {
     'as' => 'dashboard.hospital.store',
     'uses' => 'HospitalController@store'
   ]);
+  Route::delete('/dashboard/hospital/delete/{id}', [
+    'as' => 'dashboard.hospital.destroy',
+    'uses' => 'HospitalController@destroy'
+  ]);
 });
 
 // json response 

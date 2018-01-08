@@ -3,11 +3,21 @@
 <div class="text-center bg-info text-white p-5">
   <h1>
     <a class="text-white" href="{{ route('city.show', ['slug' => $hospital->city->slug]) }}"> <i class="fa fa-arrow-left"></i> </a>
-    {{$hospital->name}} City
+    {{$hospital->name}} Hospital
   </h1>
+  <p>{{$hospital->address}}</p>
+  <p>Emergency: {{$hospital->phone}}</p>
   <h4>All Doctors</h4>
 </div>
+@if(! $hospital->doctors->count()) 
+<div class="bg_random_color text-center text-white p-5">
+  <h1>
+    No doctors found for {{$hospital->name}} Hospital.
+  </h1>
+</div>
+@endif
 <div class="container">
+
   <div class="d-flex flex-wrap">
     @foreach($hospital->doctors as $doctor)
       <div class="col-md-6 col-lg-4">
