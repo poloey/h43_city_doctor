@@ -2,12 +2,23 @@
 
 use App\Doctor;
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 class DoctorsTableSeeder extends Seeder
 {
+  use Sluggable;
 
+  public function sluggable()
+  {
+      return [
+          'slug' => [
+              'source' => 'name'
+          ]
+      ];
+  }
     /**
      * Run the database seeds.
      *
@@ -20,7 +31,7 @@ class DoctorsTableSeeder extends Seeder
         $name = $faker->name;
         DB::table('doctors')->insert([
           'name' => $name,
-          'slug' => $this->generating_slug($name),
+          'slug' => SlugService::createSlug(Doctor::class, 'slug', $name),
           'email' => $faker->email,
           'address' => $faker->address,
           'hospital_id' => rand(1, Helpers::NUMBER_OF_HOSPITAL),
@@ -34,20 +45,5 @@ class DoctorsTableSeeder extends Seeder
         ]);
         
       }
-    }
-    public function generating_slug($string)
-    {
-        $slug = str_slug($string);
-        $latestSlug = Doctor::whereRaw("slug RLIKE '^{$slug}(-[0-9]*)?$'")
-                        ->latest('id')
-                        ->limit(1)
-                        ->pluck('slug');
-        // return ['slug' => $latestSlug];
-        if (count($latestSlug) != 0) {
-          $pieces = explode('-', $latestSlug);
-          $number = intval( end($pieces) );
-          $slug = $slug . '-' . ($number + 1);
-        }
-        return $slug;
     }
 }

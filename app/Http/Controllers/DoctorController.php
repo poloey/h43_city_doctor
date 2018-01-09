@@ -38,7 +38,6 @@ class DoctorController extends Controller
     ]);
     Doctor::create([
       'name' => $request->name,
-      'slug' => $this->generating_slug($request->name),
       'email' => $request->email,
       'address' => $request->address,
       'phone' => $request->number,

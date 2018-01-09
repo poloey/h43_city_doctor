@@ -24,7 +24,6 @@ class HospitalController extends Controller
     ]);
     Hospital::create([
       'name' => $request->name,
-      'slug' => $this->generating_slug($request->name),
       'address' => $request->address,
       'phone' => $request->number,
       'city_id' => $request->city,

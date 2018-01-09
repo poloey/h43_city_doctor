@@ -2,10 +2,13 @@
 
 namespace App;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Doctor extends Model
 {
+  use Sluggable;
+
   protected $guarded = [];
   public function hospital()
   {
@@ -22,5 +25,13 @@ class Doctor extends Model
   public function getRouteKeyName()
   {
       return 'slug';
+  }
+  public function sluggable()
+  {
+      return [
+          'slug' => [
+              'source' => 'name'
+          ]
+      ];
   }
 }

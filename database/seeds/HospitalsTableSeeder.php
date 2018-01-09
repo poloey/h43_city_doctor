@@ -2,11 +2,23 @@
 
 use App\Hospital;
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 class HospitalsTableSeeder extends Seeder
 {
+  use Sluggable;
+
+  public function sluggable()
+  {
+      return [
+          'slug' => [
+              'source' => 'name'
+          ]
+      ];
+  }
     /**
      * Run the database seeds.
      *
@@ -19,7 +31,7 @@ class HospitalsTableSeeder extends Seeder
         $company = $faker->company;
         DB::table('hospitals')->insert([
           'name' => $company . ' Hospital',
-          'slug' => $this->generating_slug($company),
+          'slug' => SlugService::createSlug(Hospital::class, 'slug', $company),
           'city_id' => rand(1, Helpers::NUMBER_OF_CITY),
           'user_id' => rand(1, count(Helpers::USERS)),
           'phone' => $faker->tollFreePhoneNumber,
