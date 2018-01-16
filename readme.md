@@ -2,6 +2,13 @@
 City Doctor is a doctors portals which will help user to find nearest hospital and doctor quicker. Due to it's intuitive navigation features people can easily use this application. User can search doctor by their locality, city and doctor name
 <img src="https://raw.githubusercontent.com/poloey/city-doctor/master/website.png" alt="">
 
+# Technology
+#### #frontend 
+* Bootstrap 4
+* Vue js 2.*
+#### #Backend 
+* Laravel 5.5
+
 # How to run this project
 
 #### First clone project from github and cd into this project inside terminal
