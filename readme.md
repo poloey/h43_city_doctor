@@ -3,9 +3,11 @@ City Doctor is a doctors portals which will help user to find nearest hospital a
 <img src="https://raw.githubusercontent.com/poloey/city-doctor/master/website.png" alt="">
 
 # Technology
+
 #### #frontend 
 * Bootstrap 4
 * Vue js 2.*
+
 #### #Backend 
 * Laravel 5.5
 
@@ -23,7 +25,7 @@ cd city-doctor
 npm install
 ~~~
 
-#### Building npm bundle
+#### Building npm bundle for vue
 ~~~bash
 npm run prod
 ~~~
