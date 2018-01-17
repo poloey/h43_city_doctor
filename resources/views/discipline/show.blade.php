@@ -19,7 +19,7 @@
             <div class="card-body">
               <div class="text-center">
                 <div class="mb-3">
-                  <img class="rounded-circle" src="{{ asset('image/people/' . intval($doctor->id % 99) .'.jpg') }}" alt="">
+                  <img class="rounded-circle" src="{{ asset('image/people/' . (intval($doctor->id % 98) + 1) .'.jpg') }}" alt="">
                 </div>
                 <div></div>
                 <div class="d-inline-block">
