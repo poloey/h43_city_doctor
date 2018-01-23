@@ -55,7 +55,18 @@ php artisan serve
 ~~~
 
 
+### login user:
+* sumon@gmail.com     
+* sarwar@gmail.com     
+* mojibur@gmail.com     
+* tanim@gmail.com     
+* riaz@gmail.com     
 
+##  password for all user: 
+`secret`      
+
+You can register new user and you can manage hospital, doctor information by login to dashboard.     
+Take care     
 
 
 
