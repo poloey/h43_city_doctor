@@ -15,7 +15,6 @@ class UsersTableSeeder extends Seeder
      foreach (Helpers::USERS as $index => $user) {
        DB::table('users')->insert([
           'name' => $user['name'],
-          'slug' => str_slug($user['name']),
           'level' => 0,
           'email' => $user['email'],
           'password' => bcrypt('secret'),
